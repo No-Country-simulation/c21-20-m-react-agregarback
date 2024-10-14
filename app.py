@@ -28,46 +28,78 @@ class Producto:
             
         # Create tables
         # Users Table
-        self.cursor.execute('''CREATE TABLE IF NOT EXISTS users (
-            user_id INT AUTO_INCREMENT PRIMARY KEY,
-            username VARCHAR(255) NOT NULL,
+        self.cursor.execute('''CREATE TABLE IF NOT EXISTS usuarios (
+            id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(255) NOT NULL UNIQUE,
             email VARCHAR(255) NOT NULL UNIQUE,
-            password VARCHAR(255) NOT NULL,
-            role ENUM('comprador', 'vendedor') NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+            contraseña VARCHAR(255) NOT NULL,
+            rol ENUM('comprador', 'vendedor') NOT NULL,
+            creado_el TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            modificado_el TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+            );''')
+        
+        # Categories table
+        self.cursor.execute('''CREATE TABLE IF NOT EXISTS categorias (
+            id_categoria INT AUTO_INCREMENT PRIMARY KEY,
+            nombre VARCHAR(255) NOT NULL,
+            descripcion TEXT
             );''')
 
         # Products table
-        self.cursor.execute('''CREATE TABLE IF NOT EXISTS products (
-            product_id INT AUTO_INCREMENT PRIMARY KEY,
-            seller_id INT NOT NULL,
-            category_id INT NOT NULL,
-            title VARCHAR(255) NOT NULL,
-            description TEXT,
-            price DECIMAL(10,2) NOT NULL,
-            stock_quantity INT DEFAULT 0,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-            FOREIGN KEY (seller_id) REFERENCES users(user_id) ON DELETE CASCADE,
-            FOREIGN KEY (category_id) REFERENCES categories(category_id)
-            );''')
-
-        # Categories table
-        self.cursor.execute('''CREATE TABLE IF NOT EXISTS categories (
-            category_id INT AUTO_INCREMENT PRIMARY KEY,
-            name VARCHAR(255) NOT NULL,
-            description TEXT
+        self.cursor.execute('''CREATE TABLE IF NOT EXISTS productos (
+            id_producto INT AUTO_INCREMENT PRIMARY KEY,
+            id_vendedor INT NOT NULL,
+            titulo VARCHAR(255) NOT NULL,
+            descripcion TEXT,
+            precio DECIMAL(10,2) NOT NULL,
+            categoria INT NOT NULL,
+            creado_el TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            modificado_el TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            FOREIGN KEY (id_vendedor) REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
+            FOREIGN KEY (categoria) REFERENCES categorias(id_categoria)
             );''')
 
         self.conn.commit()
         self.cursor.close()
         self.cursor = self.conn.cursor(dictionary=True)
 
+    ## Manejo de usuarios
+    def agregar_usuario(self, username, email, contraseña, rol):
+        self.cursor.execute(f"SELECT * FROM usuarios WHERE username = %s AND email = %s", (username, email))
+
+        usuario_existente = self.cursor.fetchone()
+        if usuario_existente:
+            return False
+        
+        sql = "INSERT INTO usuarios (username, email, contraseña, rol) VALUES (%s, %s, %s, %s)"
+        valores = (username, email, contraseña, rol)
+
+        self.cursor.execute(sql, valores)
+        self.conn.commit()
+        return True
+    
+    def consultar_usuario(self, username, email):
+        self.cursor.execute(f"SELECT * FROM usuarios WHERE username = %s AND email = %s", (username, email))
+        return self.cursor.fetchone()
 # End Header
 
 # Body
 producto = Producto(host='localhost', user='root', password='', database='ecommerce')
+
+@app.route("/ecommerce", methods=["POST"])
+def agregar_usuario():
+    username = request.form["username"]
+    email = request.form["email"]
+    contraseña = request.form["contraseña"]
+    rol = request.form["rol"]
+
+    usuario = producto.consultar_usuario(username, email)
+    if not usuario:
+        if producto.agregar_usuario(username, email, contraseña, rol):
+            return jsonify({"mensaje": "Usuario registrado"}), 201
+    else:
+        return jsonify({"mensaje": "El usuario ya existe"}), 400
+
 if __name__ == "__main__":
     app.run(debug=True)
 # End Body
