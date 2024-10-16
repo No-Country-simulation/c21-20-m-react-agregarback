@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Header
-class Producto:
+class Usuarios:
     def __init__(self, host, user, password, database):
         self.conn = mysql.connector.connect(
             host=host,
@@ -37,27 +37,6 @@ class Producto:
             creado_el TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             modificado_el TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             );''')
-        
-        # Categories table
-        self.cursor.execute('''CREATE TABLE IF NOT EXISTS categorias (
-            id_categoria INT AUTO_INCREMENT PRIMARY KEY,
-            nombre VARCHAR(255) NOT NULL,
-            descripcion TEXT
-            );''')
-
-        # Products table
-        self.cursor.execute('''CREATE TABLE IF NOT EXISTS productos (
-            id_producto INT AUTO_INCREMENT PRIMARY KEY,
-            id_vendedor INT NOT NULL,
-            titulo VARCHAR(255) NOT NULL,
-            descripcion TEXT,
-            precio DECIMAL(10,2) NOT NULL,
-            categoria INT NOT NULL,
-            creado_el TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            modificado_el TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-            FOREIGN KEY (id_vendedor) REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
-            FOREIGN KEY (categoria) REFERENCES categorias(id_categoria)
-            );''')
 
         self.conn.commit()
         self.cursor.close()
@@ -65,12 +44,12 @@ class Producto:
 
     ## Manejo de usuarios
     def agregar_usuario(self, username, email, contraseña, rol):
+        # Verificamos si ya existe un usuario con el mismo turno
         self.cursor.execute(f"SELECT * FROM usuarios WHERE username = %s AND email = %s", (username, email))
 
         usuario_existente = self.cursor.fetchone()
         if usuario_existente:
             return False
-        
         sql = "INSERT INTO usuarios (username, email, contraseña, rol) VALUES (%s, %s, %s, %s)"
         valores = (username, email, contraseña, rol)
 
@@ -78,13 +57,14 @@ class Producto:
         self.conn.commit()
         return True
     
-    def consultar_usuario(self, username, email):
-        self.cursor.execute(f"SELECT * FROM usuarios WHERE username = %s AND email = %s", (username, email))
-        return self.cursor.fetchone()
+    def leer_usuario(self):
+        self.cursor.execute("SELECT * FROM usuarios")
+        usuario = self.cursor.fetchall()
+        return usuario
 # End Header
 
 # Body
-producto = Producto(host='localhost', user='root', password='', database='ecommerce')
+usuario = Usuarios(host='localhost', user='root', password='', database='ecommerce')
 
 @app.route("/ecommerce", methods=["POST"])
 def agregar_usuario():
@@ -93,13 +73,16 @@ def agregar_usuario():
     contraseña = request.form["contraseña"]
     rol = request.form["rol"]
 
-    usuario = producto.consultar_usuario(username, email)
-    if not usuario:
-        if producto.agregar_usuario(username, email, contraseña, rol):
-            return jsonify({"mensaje": "Usuario registrado"}), 201
+    if usuario.agregar_usuario(username, email, contraseña, rol):
+        return jsonify({"mensaje": "Usuario registrado"}), 201
     else:
         return jsonify({"mensaje": "El usuario ya existe"}), 400
 
+@app.route("/ecommerce", methods=["GET"])
+def leer_usuario():
+    usuarios = usuario.leer_usuario()
+    return jsonify(usuarios)
+
+# End Body
 if __name__ == "__main__":
     app.run(debug=True)
-# End Body
