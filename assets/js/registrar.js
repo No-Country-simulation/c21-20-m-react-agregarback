@@ -7,7 +7,6 @@ document.getElementById('formulario').addEventListener('submit', (event) => {
     formData.append("username", document.getElementById('username').value)
     formData.append("email", document.getElementById('email').value)
     formData.append("contraseña", document.getElementById('contraseña').value)
-    formData.append("rol", document.getElementById('rol').value)
     
     fetch(URL + 'ecommerce', {
         method: 'POST',
@@ -20,7 +19,6 @@ document.getElementById('formulario').addEventListener('submit', (event) => {
         document.getElementById("username").value = ""
         document.getElementById("email").value = ""
         document.getElementById("contraseña").value = ""
-        document.getElementById("rol").value = ""
         document.getElementById("terminos").checked = false
     })
     .catch((error) => {

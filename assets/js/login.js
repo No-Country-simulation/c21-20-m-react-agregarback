@@ -2,13 +2,19 @@ const URL = "http://127.0.0.1:5000/"
 
 document.getElementById('login').addEventListener('submit', (event) => {
     event.preventDefault()
-    
-    fetch(URL + 'ecommerce')
-    .then((response) => response.json())
-    .then((data) => {
-        console.log(data)
+    var formData = new FormData()
+    formData.append("username", document.getElementById("username").value)
+    formData.append("contraseña", document.getElementById("password").value)
+    fetch(URL + 'usuarios', {
+        method: "POST",
+        body: formData
     })
-    .catch((error) => {
-        alert(`Error al crear el usuario: ${error}`)
+    .then(response => response.json())
+    .then(data => {
+        alert(data.mensaje)
+    })
+    .catch(error => {
+        alert("Error al iniciar sesión")
+        console.log(error)
     })
 })
