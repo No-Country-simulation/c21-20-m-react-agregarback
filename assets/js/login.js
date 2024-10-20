@@ -11,10 +11,19 @@ document.getElementById('login').addEventListener('submit', (event) => {
     })
     .then(response => response.json())
     .then(data => {
-        alert(data.mensaje)
+        if(data.mensaje == "Bienvenido") {
+            location.href = "index.html"
+        } else {
+            document.getElementById("error").classList.add("active")
+            document.getElementById("errorText").innerHTML = data.mensaje
+        }
     })
     .catch(error => {
         alert("Error al iniciar sesión")
         console.log(error)
     })
+})
+
+document.getElementById("closeError").addEventListener("click", () => {
+    document.getElementById("error").classList.remove("active")
 })

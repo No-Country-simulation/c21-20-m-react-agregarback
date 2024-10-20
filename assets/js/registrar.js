@@ -14,14 +14,28 @@ document.getElementById('formulario').addEventListener('submit', (event) => {
     })
     .then((response) => response.json())
     .then((data) => {
-        console.log(data)
-        alert(data.mensaje)
-        document.getElementById("username").value = ""
-        document.getElementById("email").value = ""
-        document.getElementById("contraseña").value = ""
-        document.getElementById("terminos").checked = false
+        console.log(data.mensaje)
+        if(data.mensaje == "Usuario registrado") {
+            document.getElementById("errorContainer").classList.add("success")
+            document.getElementById("error").classList.add("active")
+            document.getElementById("errorText").innerHTML = data.mensaje
+
+            document.getElementById("username").value = ""
+            document.getElementById("email").value = ""
+            document.getElementById("contraseña").value = ""
+            document.getElementById("terminos").checked = false
+        } else {
+            document.getElementById("errorContainer").classList.remove("success")
+            document.getElementById("error").classList.add("active")
+            document.getElementById("errorText").innerHTML = data.mensaje
+        }
+        
     })
     .catch((error) => {
-        alert("El usuario o el email ya existen!")
+        alert(error)
     })
+})
+
+document.getElementById("closeError").addEventListener("click", () => {
+    document.getElementById("error").classList.remove("active")
 })
