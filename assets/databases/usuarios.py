@@ -95,7 +95,7 @@ def iniciar_sesion():
     elif login == "contraseña incorrecta":
         return jsonify({"mensaje":"La contraseña es incorrecta"})
     else:
-        return jsonify({"mensaje": f"Bienvenido"})
+        return jsonify({"mensaje": "Bienvenido"})
     
 if __name__ == "__main__":
     app.run(debug=True)
