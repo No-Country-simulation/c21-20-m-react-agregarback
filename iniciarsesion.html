@@ -5,12 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Registro</title>
     <link rel="stylesheet" href="assets/css/iniciarsesion.css">
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
     <main>
         <div class="card-container">
+            <div class="error" id="error">
+                <div class="error-container">
+                    <p class="error-text" id="errorText"></p>
+                    <i class="bx bx-x" id="closeError"></i>
+                </div>
+            </div>
             <form class="container-form" id="login">
-                <h1>INICIAR SESIÓN</h1>
+                <h1>Iniciar sesión</h1>
                 
                 <!-- Campo Username -->
                 <div class="input-group">
