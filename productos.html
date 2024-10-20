@@ -10,56 +10,88 @@
 </head>
 <body>
     <header>
+        <!-- Navbar -->
         <nav class="navbar" id="navbar">
             <i class="bx bx-menu" id="menuButton"></i>
-            <ul class="navbar-items">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="productos.html">Productos</a></li>
-                <li><a href="nosotros.html">Nosotros</a></li>
-                <li><a href="#">Contacto</a></li>
-            </ul>
-            <ul class="navbar-perfil">
-                <li><a href="#" class="cart">Carrito</a></li>
-                <li><a href="iniciarsesion.html" class="login">Iniciar sesión</a></li>
-            </ul>
+            <div class="navbar-nav">
+                <ul class="navbar-items">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+                <ul class="navbar-perfil">
+                    <li><a href="iniciarsesion.html" class="login">Iniciar sesión</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
     <main>
         <!-- Productos -->
         <section class="productos">
-            <div class="buscar-input">
-                <div class="input-group">
+            <div class="productos-search">
+                <div class="search-group">
                     <label for="search">Buscar producto</label>
                     <input type="text" name="search" id="search">
                 </div>
-                <button type="button" class="input-button">Buscar</button>
+                <button type="button" class="search-button">Buscar</button>
             </div>
-            <div class="productos-cards" id="productos">
-                <div class="producto-block">
-                    <img src="assets/images/nature-background-of-brown-handicraft-weave-texture-bamboo-surface-photo.jpeg" alt="producto">
-                    <h3>Titulo del producto</h3>
-                    <p>Creado por: Tienda anónima</p>
-                    <div class="producto-buttons">
-                        <a href="#" class="button-view">Visitar tienda</a>
-                        <button type="button" class="button-add">Agregar al carrito</button>
+            <div class="productos-content">
+                <div class="productos-filtros">
+                    <div class="filtros-header">
+                        <h1>Filtrar</h1>
+                        <span>Limpiar filtros</span>
+                    </div>
+                    <div class="filtros-content">
+                        <h2 class="filtros-title">Categorías</h2>
+                        <div class="filtros-group">
+                            <input type="checkbox" name="mates" id="mates">
+                            <label for="mates">Mates</label>
+                        </div>
+                        <div class="filtros-group">
+                            <input type="checkbox" name="bombillas" id="bombillas">
+                            <label for="bombillas">Bombillas</label>
+                        </div>
+                        <div class="filtros-group">
+                            <input type="checkbox" name="vasos" id="vasos">
+                            <label for="vasos">Vasos</label>
+                        </div>
+                        <div class="filtros-group">
+                            <input type="checkbox" name="tazas" id="tazas">
+                            <label for="tazas">Tazas</label>
+                        </div>
                     </div>
                 </div>
-                <div class="producto-block">
-                    <img src="assets/images/nature-background-of-brown-handicraft-weave-texture-bamboo-surface-photo.jpeg" alt="producto">
-                    <h3>Titulo del producto</h3>
-                    <p>Creado por: Tienda anónima</p>
-                    <div class="producto-buttons">
-                        <a href="#" class="button-view">Visitar tienda</a>
-                        <button type="button" class="button-add">Agregar al carrito</button>
+                <div class="productos-cards">
+                    <div class="card-group">
+                        <a href="#" class="card-image">
+                            <img src="assets/images/D_Q_NP_2X_631826-MLU73159343847_112023-V.webp" alt="producto">
+                        </a>
+                        <div class="card-content">
+                            <a href="#">Nombre de la tienda</a>
+                            <h3>Titulo del producto</h3>
+                            <span>$99.999,99</span>
+                        </div>
                     </div>
-                </div>
-                <div class="producto-block">
-                    <img src="assets/images/nature-background-of-brown-handicraft-weave-texture-bamboo-surface-photo.jpeg" alt="producto">
-                    <h3>Titulo del producto</h3>
-                    <p>Creado por: Tienda anónima</p>
-                    <div class="producto-buttons">
-                        <a href="#" class="button-view">Visitar tienda</a>
-                        <button type="button" class="button-add">Agregar al carrito</button>
+                    <div class="card-group">
+                        <a href="#" class="card-image">
+                            <img src="assets/images/D_Q_NP_2X_631826-MLU73159343847_112023-V.webp" alt="producto">
+                        </a>
+                        <div class="card-content">
+                            <a href="#">Nombre de la tienda</a>
+                            <h3>Titulo del producto</h3>
+                            <span>$99.999,99</span>
+                        </div>
+                    </div>
+                    <div class="card-group">
+                        <a href="#" class="card-image">
+                            <img src="assets/images/D_Q_NP_2X_631826-MLU73159343847_112023-V.webp" alt="producto">
+                        </a>
+                        <div class="card-content">
+                            <a href="#">Nombre de la tienda</a>
+                            <h3>Titulo del producto</h3>
+                            <span>$99.999,99</span>
+                        </div>
                     </div>
                 </div>
             </div>
