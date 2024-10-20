@@ -17,19 +17,26 @@ body {
 /* Navbar */
 .navbar {
     background: #a56329;
-    padding: 1rem 32px;
+    padding: 1rem 56px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.navbar-items {
+.navbar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-items,
+.navbar-perfil {
     list-style: none;
     display: flex;
     gap: 1rem;
 }
 .navbar-items a,
-.login {
+.navbar-perfil a {
     text-decoration: none;
     color: #faf6ec;
     transition: color .3s ease-out;
@@ -37,7 +44,7 @@ body {
 }
 
 .navbar-items a:hover,
-.login:hover {
+.navbar-perfil a:hover {
     color: #f3e8ce;
 }
 
@@ -58,7 +65,7 @@ body {
 }
 
 .hero-content {
-    padding: 0 32px;
+    padding: 0 56px;
     background: rgba(55, 25, 17, .75);
     color: #f3e8ce;
     width: 100%;
@@ -97,7 +104,7 @@ body {
         top: 0;
         left: 0;
         width: 100%;
-        padding: 1rem 20px;
+        padding: 1rem 29px;
         height: 72px;
         overflow: hidden;
         flex-direction: column;
@@ -106,15 +113,28 @@ body {
         transition: height .3s ease-out;
     }
 
-    main {
-        margin-top: 72px;
+    .navbar.active {
+        height: 277px;
     }
 
-    .navbar.active {
-        height: 252px;
+    .navbar-nav {
+        flex-direction: column;
+        gap: 1rem;
     }
 
     .navbar-items {
         flex-direction: column;
+    }
+
+    .navbar-perfil {
+        flex-direction: column;
+    }
+
+    main {
+        margin-top: 72px;
+    }
+
+    .hero-content {
+        padding: 0 29px;
     }
 }
