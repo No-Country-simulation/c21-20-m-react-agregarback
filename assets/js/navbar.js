@@ -11,7 +11,7 @@ window.addEventListener("load", () => {
                 <i class="bx bx-chevron-down"></i>
             </button>
             <div id="loginDropdown" class="login-dropdown">
-                <a href="#">Mi tienda</a>
+                <a href="tienda.html">Mi tienda</a>
                 <a href="iniciarsesion.html">Cerrar sesión</a>
             </div>
         `
