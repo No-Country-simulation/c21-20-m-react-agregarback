@@ -1,0 +1,185 @@
+.navbar {
+    background: #a56329;
+    padding: 1rem 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-items,
+.navbar-perfil {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.navbar-items a {
+    text-decoration: none;
+    color: #faf6ec;
+    transition: color .3s ease-out;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.navbar-items a:hover {
+    color: #f3e8ce;
+}
+
+.user {
+    text-decoration: none;
+    font-size: 20px;
+    color: #faf6ec;
+    font-weight: bold;
+    height: 42px;
+    padding: 0 1rem;
+    background: #CF9440;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background .3s ease-out;
+}
+
+.user:hover {
+    background: #c07f32;
+}
+
+.login {
+    border: none;
+    height: 42px;
+    width: 180px;
+    font-size: 20px;
+    background: #CF9440;
+    color: #faf6ec;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background .3s ease-out;
+}
+
+.login:hover {
+    background: #c07f32;
+}
+
+#userContent {
+    position: relative;
+}
+
+.login-dropdown {
+    background: #CF9440;
+    font-size: 20px;
+    width: 180px;
+    height: 0;
+
+    position: absolute;
+    top: 42px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: height .3s ease-out;
+}
+
+.login-dropdown a {
+    text-decoration: none;
+    color: #faf6ec;
+    font-weight: bold;
+    height: 42px;
+    width: 100%;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    transition: background .3s ease-out;
+}
+
+.login-dropdown a:hover {
+    background: #c07f32;
+}
+
+.login-dropdown.active {
+    height: 84px;
+}
+
+.bx-menu {
+    font-size: 40px;
+    display: none !important;
+    cursor: pointer;
+}
+
+/* Laptop design */
+@media(min-width: 769px) and (max-width: 1024px){
+    .navbar {
+        padding: 1rem 40px;
+    }
+
+    .navbar-items a {
+        font-size: 18px;
+    }
+
+    .navbar-perfil a {
+        font-size: 18px;
+    }
+}
+/* Mobile design */
+@media(max-width: 768px){
+    .bx-menu {
+        display: block !important;
+        color: #FAF6EC;
+    }
+    
+    .navbar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 72px;
+        overflow: hidden;
+        padding: 1rem 12px;
+        flex-direction: column;
+        justify-content: start;
+        align-items: initial;
+        gap: 1rem;
+        transition: height .3s ease-out;
+    }
+
+    .navbar.active {
+        height: 380px;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: start;
+        gap: 1rem;
+    }
+
+    .navbar-items {
+        flex-direction: column;
+    }
+
+    .navbar-items a {
+        font-size: 1rem;
+    }
+
+    .navbar-perfil {
+        flex-direction: column;
+    }
+
+    .login {
+        font-size: 1rem;
+    }
+
+    .login-dropdown a {
+        font-size: 1rem;
+    }
+
+    .user {
+        font-size: 1rem;
+    }
+}
