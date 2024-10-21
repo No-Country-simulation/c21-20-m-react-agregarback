@@ -13,6 +13,8 @@ document.getElementById('login').addEventListener('submit', (event) => {
     .then(data => {
         if(data.mensaje == "Bienvenido") {
             location.href = "index.html"
+            let session = document.getElementById("username").value
+            localStorage.setItem("session", session)
         } else {
             document.getElementById("error").classList.add("active")
             document.getElementById("errorText").innerHTML = data.mensaje
@@ -26,4 +28,8 @@ document.getElementById('login').addEventListener('submit', (event) => {
 
 document.getElementById("closeError").addEventListener("click", () => {
     document.getElementById("error").classList.remove("active")
+})
+
+window.addEventListener("load", () => {
+    localStorage.clear("session")
 })

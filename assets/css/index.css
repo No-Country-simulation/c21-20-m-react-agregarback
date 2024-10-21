@@ -27,6 +27,7 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .navbar-items,
@@ -35,17 +36,85 @@ body {
     display: flex;
     gap: 1rem;
 }
-.navbar-items a,
-.navbar-perfil a {
+
+.navbar-items a {
     text-decoration: none;
     color: #faf6ec;
     transition: color .3s ease-out;
     font-weight: bold;
+    font-size: 20px;
+}
+
+.user {
+    text-decoration: none;
+    color: #faf6ec;
+    transition: color .3s ease-out;
+    font-weight: bold;
+    height: 42px;
+    padding: 0 1rem;
+    background: #CF9440;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar-items a:hover,
-.navbar-perfil a:hover {
+.user:hover {
     color: #f3e8ce;
+}
+
+.login {
+    border: none;
+    height: 42px;
+    width: 180px;
+    font-size: 20px;
+    background: #CF9440;
+    color: #faf6ec;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background .3s ease-out;
+}
+
+.login:hover {
+    background: #c07f32;
+}
+
+#userContent {
+    position: relative;
+}
+
+.login-dropdown {
+    background: #CF9440;
+    font-size: 20px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+
+    position: absolute;
+    top: 42px;
+    left: 0;
+    width: 180px;
+}
+
+.login-dropdown a {
+    text-decoration: none;
+    color: #faf6ec;
+    font-weight: bold;
+    transition: background .3s ease-out;
+    height: 42px;
+    width: 100%;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-dropdown a:hover {
+    background: #c07f32;
+}
+
+.login-dropdown.active {
+    display: flex;
 }
 
 .bx-menu {
