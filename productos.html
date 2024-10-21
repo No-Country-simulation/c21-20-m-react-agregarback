@@ -21,7 +21,8 @@
                     <li><a href="#">Contacto</a></li>
                 </ul>
                 <ul class="navbar-perfil">
-                    <li><a href="iniciarsesion.html" class="login">Iniciar sesión</a></li>
+                    <li id="userContent">
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -37,28 +38,31 @@
                 <button type="button" class="search-button">Buscar</button>
             </div>
             <div class="productos-content">
-                <div class="productos-filtros">
-                    <div class="filtros-header">
-                        <h1>Filtrar</h1>
-                        <span>Limpiar filtros</span>
-                    </div>
-                    <div class="filtros-content">
-                        <h2 class="filtros-title">Categorías</h2>
-                        <div class="filtros-group">
-                            <input type="checkbox" name="mates" id="mates">
-                            <label for="mates">Mates</label>
+                <i class="bx bx-filter" id="filterBtn"></i>
+                <div class="productos-shadow" id="filterShadow">
+                    <div class="productos-filtros" id="filter">
+                        <div class="filtros-header">
+                            <h1>Filtrar</h1>
+                            <span>Limpiar filtros</span>
                         </div>
-                        <div class="filtros-group">
-                            <input type="checkbox" name="bombillas" id="bombillas">
-                            <label for="bombillas">Bombillas</label>
-                        </div>
-                        <div class="filtros-group">
-                            <input type="checkbox" name="vasos" id="vasos">
-                            <label for="vasos">Vasos</label>
-                        </div>
-                        <div class="filtros-group">
-                            <input type="checkbox" name="tazas" id="tazas">
-                            <label for="tazas">Tazas</label>
+                        <div class="filtros-content">
+                            <h2 class="filtros-title">Categorías</h2>
+                            <div class="filtros-group">
+                                <input type="checkbox" name="mates" id="mates">
+                                <label for="mates">Mates</label>
+                            </div>
+                            <div class="filtros-group">
+                                <input type="checkbox" name="bombillas" id="bombillas">
+                                <label for="bombillas">Bombillas</label>
+                            </div>
+                            <div class="filtros-group">
+                                <input type="checkbox" name="vasos" id="vasos">
+                                <label for="vasos">Vasos</label>
+                            </div>
+                            <div class="filtros-group">
+                                <input type="checkbox" name="tazas" id="tazas">
+                                <label for="tazas">Tazas</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -98,6 +102,7 @@
         </section>
     </main>
 
+    <script src="assets/js/navbar.js"></script>
     <script src="assets/js/productos.js"></script>
 </body>
 </html>

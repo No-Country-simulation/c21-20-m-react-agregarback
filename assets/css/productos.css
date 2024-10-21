@@ -27,6 +27,7 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .navbar-items,
@@ -35,17 +36,84 @@ body {
     display: flex;
     gap: 1rem;
 }
-.navbar-items a,
-.navbar-perfil a {
+
+.navbar-items a {
     text-decoration: none;
     color: #faf6ec;
     transition: color .3s ease-out;
     font-weight: bold;
+    font-size: 20px;
+}
+
+.user {
+    text-decoration: none;
+    font-size: 20px;
+    color: #faf6ec;
+    transition: color .3s ease-out;
+    font-weight: bold;
+    height: 42px;
+    padding: 0 1rem;
+    background: #CF9440;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar-items a:hover,
-.navbar-perfil a:hover {
+.user:hover {
     color: #f3e8ce;
+}
+
+.login {
+    border: none;
+    height: 42px;
+    width: 180px;
+    font-size: 20px;
+    background: #CF9440;
+    color: #faf6ec;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background .3s ease-out;
+}
+
+.login:hover {
+    background: #c07f32;
+}
+
+#userContent {
+    position: relative;
+}
+
+.login-dropdown {
+    background: #CF9440;
+    font-size: 20px;
+    width: 180px;
+    height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: height .3s ease-out;
+}
+
+.login-dropdown a {
+    text-decoration: none;
+    color: #faf6ec;
+    font-weight: bold;
+    height: 42px;
+    width: 100%;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    transition: background .3s ease-out;
+}
+
+.login-dropdown a:hover {
+    background: #c07f32;
+}
+
+.login-dropdown.active {
+    height: 84px;
 }
 
 .bx-menu {
@@ -113,18 +181,21 @@ body {
     gap: 1rem;
 }
 
+.bx-filter {
+    display: none !important;
+}
+
 .filtros-header {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
-.filtros-header h3 {
-    font-size: 24px;
+.filtros-header h1 {
+    font-size: 20px;
 }
 
 .filtros-header span {
-    font-size: 20px;
     color: #DBB169;
 }
 
@@ -135,7 +206,7 @@ body {
 }
 
 .filtros-title {
-    font-size: 20px;
+    font-size: 1rem;
 }
 
 .filtros-group {
@@ -147,10 +218,6 @@ body {
 .filtros-group input {
     width: 20px;
     height: 20px;
-}
-
-.filtros-group label {
-    font-size: 20px;
 }
 
 .productos-cards {
@@ -183,30 +250,39 @@ body {
     padding: .5rem 0;
     display: flex;
     flex-direction: column;
-    gap: .5rem;
 }
 
 .card-content a {
     font-weight: bold;
+    font-size: 14px;
     text-decoration: none;
     color: #CF9440;
 }
 
 .card-content h3 {
-    font-size: 20px;
+    font-size: 1rem;
 }
 
 .card-content span {
-    font-size: 20px;
     font-weight: bold;
 }
 /* /Productos */
 
 /* Tablet design */
-@media(min-width: 376px) and (max-width: 768px){
+@media(min-width: 551px) and (max-width: 768px){
+    /* Navbar */
     .navbar {
         padding: 1rem 2rem;
     }
+
+    .navbar-items a {
+        font-size: 1rem;
+    }
+
+    .user {
+        font-size: 1rem;
+    }
+    /* /Navbar */
 
     .productos {
         padding: 0 2rem;
@@ -226,7 +302,8 @@ body {
 }
 
 /* Mobile design */
-@media(max-width: 425px){
+@media(max-width: 550px){
+    /* Navbar */
     .bx-menu {
         display: block !important;
     }
@@ -236,21 +313,23 @@ body {
         top: 0;
         left: 0;
         width: 100%;
-        padding: 1rem 29px;
         height: 72px;
         overflow: hidden;
+        padding: 1rem 29px;
         flex-direction: column;
+        justify-content: start;
         align-items: initial;
         gap: 1rem;
         transition: height .3s ease-out;
     }
 
     .navbar.active {
-        height: 277px;
+        height: 380px;
     }
 
     .navbar-nav {
         flex-direction: column;
+        align-items: start;
         gap: 1rem;
     }
 
@@ -258,9 +337,26 @@ body {
         flex-direction: column;
     }
 
+    .navbar-items a {
+        font-size: 1rem;
+    }
+
     .navbar-perfil {
         flex-direction: column;
     }
+
+    .login {
+        font-size: 1rem;
+    }
+
+    .login-dropdown a {
+        font-size: 1rem;
+    }
+
+    .user {
+        font-size: 1rem;
+    }
+    /* /Navbar */
 
     main {
         margin-top: 72px;
@@ -282,8 +378,46 @@ body {
         width: 100%;
     }
 
+    .productos-shadow {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        transition: background .3s ease-out;
+    }
+
+    .productos-shadow.active {
+        background: rgba(0, 0, 0, .5);
+        width: 100%;
+    }
+
     .productos-filtros {
-        display: none;
+        background: #a56329;
+        padding: 0;
+        color: #FAF6EC;
+        width: 0;
+        overflow: hidden;
+        justify-content: center;
+        height: 100%;
+        transition: width .3s ease-out;
+    }
+
+    .productos-filtros.active {
+        padding: 0 29px;
+        width: 250px;
+    }
+
+    .bx-filter {
+        display: inline !important;
+        font-size: 40px;
+        height: 40px;
+        cursor: pointer;
+    }
+
+    .filtros-group {
+        width: 1rem;
+        height: 1rem;
     }
 
     .productos-cards {
