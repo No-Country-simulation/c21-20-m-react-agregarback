@@ -1,0 +1,165 @@
+/* Global */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #f3e8ce;
+    color: #371911;
+}
+/* /Global */
+
+/* Tienda */
+.tienda {
+    margin-top: 72px;
+    padding: 2rem 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.tienda-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-img {
+    min-width: 88px;
+    height: 88px;
+    background: #606060;
+    border-radius: 50%;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.tienda-productos {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.productos-cards {
+    width: 288px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.card-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: .5rem;
+}
+
+.card-image {
+    width: 100%;
+    display: flex;
+}
+
+.card-group img {
+    width: 100%;
+    object-fit: contain;
+}
+
+.card-content {
+    padding: .5rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-content p {
+    font-size: 14px;
+}
+
+.card-content h3 {
+    font-size: 20px;
+}
+
+.card-content span {
+    font-weight: bold;
+    color: #CF9440;
+}
+/* /Tienda */
+
+/* Media queries */
+@media(min-width: 576px){
+    .tienda {
+        padding: 2rem 24px;
+    }
+
+    .productos-cards {
+        width: 528px;
+    }
+
+    .card-group {
+        width: 256px;
+    }
+}
+
+@media(min-width: 768px){
+    .tienda {
+        margin: 0;
+    }
+
+    .productos-cards {
+        width: 720px;
+    }
+
+    .card-group {
+        width: 352px;
+    }
+}
+
+@media(min-width: 992px){
+    .productos-cards {
+        width: 944px;
+    }
+
+    .card-group {
+        width: 304px;
+    }
+}
+
+@media(min-width: 1200px){
+    .tienda {
+        padding: 2rem;
+    }
+
+    .productos-cards {
+        width: 1136px;
+    }
+
+    .card-group {
+        width: 272px;
+    }
+}
+
+@media(min-width: 1400px){
+    .header-content h1 {
+        font-size: 28px;
+    }
+
+    .header-content p {
+        font-size: 20px;
+    }
+
+    .card-content span {
+        font-size: 20px;
+    }
+
+    .card-content h3 {
+        font-size: 24px;
+    }
+}
