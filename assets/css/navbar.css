@@ -33,6 +33,10 @@
 }
 
 .user {
+    display: flex;
+}
+
+.user-btn {
     text-decoration: none;
     font-size: 20px;
     color: #faf6ec;
@@ -46,7 +50,7 @@
     transition: background .3s ease-out;
 }
 
-.user:hover {
+.user-btn:hover {
     background: #c07f32;
 }
 
@@ -179,7 +183,7 @@
         font-size: 1rem;
     }
 
-    .user {
+    .user-btn {
         font-size: 1rem;
     }
 }

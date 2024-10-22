@@ -20,9 +20,11 @@ window.addEventListener("load", () => {
         })
     } else {
         document.getElementById("userContent").innerHTML = `
-            <a href="iniciarsesion.html" class="user" id="user">
+        <div class="user">
+            <a href="iniciarsesion.html" class="user-btn" id="user">
                 Iniciar sesión
             </a>
+        </div>
         `
     }
 })

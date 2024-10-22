@@ -44,6 +44,10 @@ body {
 }
 
 .hero-productos {
+    display: flex;
+}
+
+.hero-btn {
     text-decoration: none;
     background: #cf9440;
     width: 178px;
@@ -57,7 +61,7 @@ body {
     transition: background .3s ease-out;
 }
 
-.hero-productos:hover {
+.hero-btn:hover {
     background: #c07f32;
 }
 /* /Hero */
@@ -87,7 +91,7 @@ body {
         font-size: 1rem;
     }
 
-    .hero-productos {
+    .hero-btn {
         font-size: 1rem;
         height: 42px;
         width: 160px;
