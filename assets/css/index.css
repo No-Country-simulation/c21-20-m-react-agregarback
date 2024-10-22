@@ -12,23 +12,27 @@ body {
     background: #faf6ec;
     color: #371911;
 }
+
+main {
+    margin-top: 72px;
+}
 /* /Global */
 
 /* Hero */
 .hero{
+    height: calc(100vh - 72px);
     background: url(../images/38269_38269_38269_38269_almacen-anticuarios-artesanias-colombia-2021-g2.jpeg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 90vh;
     display: flex;
 }
 
 .hero-content {
-    padding: 0 56px;
-    background: rgba(55, 25, 17, .75);
     color: #FAF6EC;
+    padding: 0 12px;
     width: 100%;
+    background: rgba(55, 25, 17, .75);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,11 +40,7 @@ body {
 }
 
 .hero-title {
-    font-size: 36px;
-}
-
-.hero-text {
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .hero-productos {
@@ -48,16 +48,11 @@ body {
 }
 
 .hero-btn {
-    text-decoration: none;
     background: #cf9440;
-    width: 178px;
     color: #f3e8ce;
-    height: 48px;
+    padding: .5rem 1rem;
+    text-decoration: none;
     font-weight: bold;
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     transition: background .3s ease-out;
 }
 
@@ -66,34 +61,35 @@ body {
 }
 /* /Hero */
 
-/* Laptop design */
-@media(min-width: 769px) and (max-width: 1024px){
+/* Media queries */
+@media(min-width: 576px){
     .hero-content {
-        padding: 0 40px;
+        padding: 0 24px;
     }
 }
 
-/* Mobile design */
-@media(max-width: 768px){
+@media(min-width: 768px){
     main {
-        margin-top: 72px;
+        margin: 0;
     }
+}
 
+@media(min-width: 1200px){
     .hero-content {
-        padding: 0 12px;
+        padding: 0 2rem;
     }
+}
 
+@media(min-width: 1400px){
     .hero-title {
         font-size: 28px;
     }
 
     .hero-text {
-        font-size: 1rem;
+        font-size: 20px;
     }
 
     .hero-btn {
-        font-size: 1rem;
-        height: 42px;
-        width: 160px;
+        font-size: 20px;
     }
 }
