@@ -32,14 +32,13 @@
         <!-- Productos -->
         <section class="productos">
             <div class="productos-search">
-                <div class="search-group">
+                <form class="search-group">
                     <label for="search">Buscar producto</label>
-                    <input type="text" name="search" id="search">
-                </div>
+                    <input type="text" name="search" id="search" placeholder="Ingrese un producto">
+                </form>
                 <button type="button" class="search-button">Buscar</button>
             </div>
             <div class="productos-content">
-                <i class="bx bx-filter" id="filterBtn"></i>
                 <div class="productos-shadow" id="filterShadow">
                     <div class="productos-filtros" id="filter">
                         <div class="filtros-header">
@@ -66,6 +65,12 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="productos-filtros-btn">
+                    <button type="button" class="filtros-btn" id="filterBtn">
+                        <i class="bx bx-filter"></i>
+                        Filtrar productos
+                    </button>
                 </div>
                 <div class="productos-cards">
                     <div class="card-group">
