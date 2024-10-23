@@ -29,11 +29,46 @@
         </nav>
     </header>
     <main class="tienda">
+        <div class="agregar-producto" id="addProduct">
+            <form class="agregar-producto-content" id="AddProductContent">
+                <span>Agregar producto</span>
+                <div class="form-group">
+                    <label for="producto">Producto:</label>
+                    <input type="text" name="producto" id="producto" placeholder="Ingrese el nombre del producto">
+                </div>
+                <div class="form-group">
+                    <label for="codigo">Código:</label>
+                    <input type="text" name="codigo" id="codigo" placeholder="Ingrese un código">
+                </div>
+                <div class="form-group">
+                    <label for="categoria">Categoria:</label>
+                    <input type="text" name="categoria" id="categoria" placeholder="Ingrese la categoría">
+                </div>
+                <div class="form-group">
+                    <label for="desc">Descripción:</label>
+                    <textarea name="desc" id="desc" rows="5" placeholder="Ingrese una descripción"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="precio">Precio</label>
+                    <input type="number" name="precio" id="precio" placeholder="Ingrese un precio">
+                </div>
+                <div class="form-group">
+                    <label for="imagen">Imagen</label>
+                    <input type="file" name="imagen" id="imagen">
+                </div>
+                <button type="button" class="form-btn">Agregar</button>
+            </form>
+        </div>
         <section class="tienda-header">
-            <div class="header-img"></div>
-            <div class="header-content">
-                <h1>Nombre de la tienda</h1>
-                <p>999 productos</p>
+            <div class="header">
+                <div class="header-img"></div>
+                <div class="header-content">
+                    <h1>Nombre de la tienda</h1>
+                    <p>999 productos</p>
+                </div>
+            </div>
+            <div class="header-button">
+                <button type="button" class="header-btn" id="addProductBtn">Nuevo producto</button>
             </div>
         </section>
         <section class="tienda-productos">
@@ -83,5 +118,6 @@
     </main>
 
     <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/tienda.js"></script>
 </body>
 </html>
