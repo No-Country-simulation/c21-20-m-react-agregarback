@@ -8,7 +8,7 @@ document.getElementById('formulario').addEventListener('submit', (event) => {
     formData.append("email", document.getElementById('email').value)
     formData.append("contraseña", document.getElementById('contraseña').value)
     
-    fetch(URL + 'ecommerce', {
+    fetch(URL + 'agregar-usuario', {
         method: 'POST',
         body: formData
     })
@@ -31,9 +31,7 @@ document.getElementById('formulario').addEventListener('submit', (event) => {
         }
         
     })
-    .catch((error) => {
-        alert(error)
-    })
+    .catch((error) => alert(error))
 })
 
 document.getElementById("closeError").addEventListener("click", () => {

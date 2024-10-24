@@ -23,7 +23,8 @@ body {
     gap: 2rem;
 }
 
-.agregar-producto {
+.agregar-producto,
+.editar-perfil {
     position: fixed;
     top: 0;
     left: 0;
@@ -36,12 +37,14 @@ body {
     transition: background .3s ease-out;
 }
 
-.agregar-producto.active {
+.agregar-producto.active,
+.editar-perfil.active {
     width: 100%;
     background: rgba(0, 0, 0, .6);
 }
 
-.agregar-producto-content {
+.agregar-producto-content,
+.editar-perfil-content {
     background: #A56329;
     color: #f3e8ce;
     padding: 1rem;
@@ -56,11 +59,13 @@ body {
     transition: transform .3s ease-out;
 }
 
-.agregar-producto-content.active {
+.agregar-producto-content.active,
+.editar-perfil-content.active {
     transform: translateX(0);
 }
 
-.agregar-producto-content span {
+.agregar-producto-content span,
+.editar-perfil-content span {
     font-size: 24px;
     font-weight: bold;
 }
@@ -104,17 +109,27 @@ body {
     gap: 1rem;
 }
 
-.header-img {
-    min-width: 88px;
+.header-img img {
+    width: 88px;
     height: 88px;
-    background: #606060;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .header-content {
     display: flex;
     flex-direction: column;
     gap: .5rem;
+}
+
+.header-content h1 {
+    text-transform: capitalize;
+}
+
+.header-button {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .header-btn {

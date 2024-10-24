@@ -11,8 +11,10 @@ window.addEventListener("load", () => {
                 <i class="bx bx-chevron-down"></i>
             </button>
             <div id="loginDropdown" class="login-dropdown">
-                <a href="tienda.html">Mi tienda</a>
-                <a href="iniciarsesion.html">Cerrar sesión</a>
+                <div class="login-dropdown-content">
+                    <a href="mitienda.html">Mi tienda</a>
+                    <a href="iniciarsesion.html">Cerrar sesión</a>
+                </div>
             </div>
         `
         document.getElementById("login").addEventListener("click", () => {

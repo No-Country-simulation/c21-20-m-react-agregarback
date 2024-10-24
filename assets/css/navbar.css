@@ -112,6 +112,10 @@
     transition: height .3s ease-out;
 }
 
+.login-dropdown-content {
+    width: 100%;
+}
+
 .login-dropdown a {
     color: #faf6ec;
     width: 100%;
@@ -158,6 +162,10 @@
 
     .navbar-items {
         flex-direction: row;
+    }
+
+    .login-dropdown {
+        position: static;
     }
 }
 

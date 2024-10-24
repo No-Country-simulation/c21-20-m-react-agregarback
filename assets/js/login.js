@@ -5,7 +5,7 @@ document.getElementById('login').addEventListener('submit', (event) => {
     var formData = new FormData()
     formData.append("username", document.getElementById("username").value)
     formData.append("contraseña", document.getElementById("password").value)
-    fetch(URL + 'usuarios', {
+    fetch(URL + 'iniciar-sesion', {
         method: "POST",
         body: formData
     })

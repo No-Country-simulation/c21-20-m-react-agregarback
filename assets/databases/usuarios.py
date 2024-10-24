@@ -1,13 +1,4 @@
-from flask import Flask, request, jsonify
-from flask import request
-from flask_cors import CORS
 import mysql.connector
-from werkzeug.utils import secure_filename
-import os
-import time
-
-app = Flask(__name__)
-CORS(app)
 
 class Usuarios:
     def __init__(self, host, user, password, database):
@@ -50,9 +41,8 @@ class Usuarios:
         elif self.consultar_email(email):
             return "mail existente"
         else:
-            sql = "INSERT INTO usuarios (username, email, contraseña) VALUES (%s, %s, %s)"
-            valores = (username, email, contraseña)
-            self.cursor.execute(sql, valores)
+            sql = f"INSERT INTO usuarios (username, email, contraseña) VALUES ('{username}', '{email}', '{contraseña}')"
+            self.cursor.execute(sql)
             self.conn.commit()
             return True
         
@@ -67,35 +57,3 @@ class Usuarios:
                 return "contraseña incorrecta"
         else:
             return "usuario inexistente"
-
-
-usuario = Usuarios(host="localhost", user="root", password="", database="ecommerce")
-
-@app.route("/ecommerce", methods=["POST"])
-def agregar_usuario():
-    username = request.form["username"]
-    email = request.form["email"]
-    contraseña = request.form["contraseña"]
-
-    validar_usuario = usuario.agregar_usuario(username, email, contraseña)
-    if validar_usuario == "usuario existente":
-        return jsonify({"mensaje": "El usuario ya existe"})
-    elif validar_usuario == "mail existente":
-        return jsonify({"mensaje": "El email ya existe"})
-    else:
-        return jsonify({"mensaje": "Usuario registrado"})
-    
-@app.route("/usuarios", methods=["POST", "GET"])
-def iniciar_sesion():
-    _username = request.form["username"]
-    _contraseña = request.form["contraseña"]
-    login = usuario.iniciar_sesion(_username, _contraseña)
-    if login == "usuario inexistente":
-        return jsonify({"mensaje": "El usuario no está registrado"})
-    elif login == "contraseña incorrecta":
-        return jsonify({"mensaje":"La contraseña es incorrecta"})
-    else:
-        return jsonify({"mensaje": "Bienvenido"})
-    
-if __name__ == "__main__":
-    app.run(debug=True)
