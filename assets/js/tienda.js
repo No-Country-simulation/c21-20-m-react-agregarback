@@ -1,5 +1,7 @@
 // Recibir datos del back
-const URL = "http://127.0.0.1:5000/"
+const URL = "https://nomarket.pythonanywhere.com/"
+// const URL = "http://127.0.0.1:5000/"
+
 let tiendaSeleccionada = localStorage.getItem("tiendaSeleccionada")
 window.addEventListener("load", () => {
     document.getElementById("nombreTienda").innerHTML = tiendaSeleccionada

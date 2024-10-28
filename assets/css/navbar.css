@@ -78,6 +78,7 @@
     width: 180px;
     padding: .5rem 0;
     font-size: 1rem;
+    text-transform: capitalize;
     border: none;
     font-weight: bold;
     cursor: pointer;

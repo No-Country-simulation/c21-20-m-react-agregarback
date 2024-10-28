@@ -29,10 +29,17 @@
         </nav>
     </header>
     <main class="tienda">
+        <!-- Mostrar Error -->
+        <div class="error" id="error">
+            <div class="error-container" id="errorContainer">
+                <p class="error-text" id="errorText"></p>
+                <i class="bx bx-x" id="closeError"></i>
+            </div>
+        </div>
         <!-- Agregar producto -->
         <div class="agregar-producto" id="addProduct">
             <form enctype="multipart/form-data" class="agregar-producto-content" id="AddProductContent">
-                <span>Agregar producto</span>
+                <h2>Agregar producto</h2>
                 <div class="form-group">
                     <label for="producto">Producto:</label>
                     <input type="text" name="producto" id="producto" placeholder="Ingrese el nombre del producto" autocomplete="off" required>
@@ -55,11 +62,55 @@
                 </div>
                 <div class="form-group">
                     <label for="imagen">Imagen</label>
-                    <input type="file" name="imagen" id="imagen">
+                    <input type="text" name="imagen" id="imagen" placeholder="Ingrese el link de la imagen">
                 </div>
                 <button type="submit" class="form-btn">Agregar</button>
                 <button type="button" class="form-btn" id="cancelProductBtn">Cancelar</button>
             </form>
+        </div>
+        
+        <!-- Editar producto -->
+        <div class="editar-producto" id="editProduct">
+            <form enctype="multipart/form-data" class="editar-producto-content" id="editProductContent">
+                <span>Editar producto</span>
+                <div class="form-group">
+                    <label for="editar_codigo">Código:</label>
+                    <input type="text" name="codigo" id="editar_codigo" placeholder="Ingrese el código" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="nuevo_producto">Producto:</label>
+                    <input type="text" name="producto" id="nuevo_producto" placeholder="Ingrese el nombre del producto" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <label for="nuevo_categoria">Categoria:</label>
+                    <input type="text" name="categoria" id="nuevo_categoria" placeholder="Ingrese la categoría" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <label for="nuevo_desc">Descripción:</label>
+                    <textarea name="desc" id="nuevo_desc" rows="5" placeholder="Ingrese una descripción" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="nuevo_precio">Precio</label>
+                    <input type="number" name="precio" id="nuevo_precio" placeholder="Ingrese un precio" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <label for="nuevo_imagen">Imagen</label>
+                    <input type="text" name="imagen" id="nuevo_imagen" placeholder="Ingrese el link de la imagen">
+                </div>
+                <button type="submit" class="form-btn">Editar</button>
+                <button type="button" class="form-btn" id="cancelEditBtn">Cancelar</button>
+                <button type="button" class="form-btn" id="deleteProductBtn">Eliminar producto</button>
+            </form>
+        </div>
+
+        <!-- Eliminar producto -->
+        <div class="eliminar-producto" id="deleteproduct">
+            <div class="eliminar-producto-content" id="deleteProductContent">
+                <h2>Eliminar producto</h2>
+                <p>¿Estás seguro que quieres eliminar el producto? Esta acción es irreversible.</p>
+                <button type="button" class="confirm-btn" id="confirmDelete">Eliminar</button>
+                <button type="button" class="cancel-btn" id="cancelDelete">Cancelar</button>
+            </div>
         </div>
 
         <!-- Editar perfil -->

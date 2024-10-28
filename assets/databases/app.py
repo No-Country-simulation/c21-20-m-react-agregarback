@@ -52,16 +52,11 @@ def agregar_producto():
     descripcion = request.form["descripcion"]
     categoria = request.form["categoria"]
     vendedor = request.form["vendedor"]
-    imagen = request.files["imagen"]
-    nombre_imagen = ""
-    nombre_imagen = secure_filename(imagen.filename) 
-    nombre_base, extension = os.path.splitext(nombre_imagen) 
-    nombre_imagen = f"{nombre_base}_{int(time.time())}{extension}"
-    nuevo_codigo = producto.agregar_producto(codigo, nuevo_producto, precio, descripcion, categoria, vendedor, nombre_imagen)
+    imagen = request.form["imagen"]
+    
+    nuevo_codigo = producto.agregar_producto(codigo, nuevo_producto, precio, descripcion, categoria, vendedor, imagen)
 
     if nuevo_codigo:
-        path = os.path.join(ruta_destino, nombre_imagen)
-        imagen.save(path)
         return jsonify({"mensaje": "Producto agregado"})
     else:
         return jsonify({"mensaje": "Producto ya existe"})
@@ -77,10 +72,51 @@ def mostrar_all_productos():
     productos = producto.mostrar_all_productos()
     return jsonify(productos)
 
+@app.route("/mostrar-producto", methods=["GET", "POST"])
+def mostrar_producto():
+    codigo = request.form["codigo"]
+    ver_producto = producto.consultar_producto(codigo)
+    return jsonify(ver_producto)
+
+@app.route("/editar-producto", methods=["PUT"])
+def editar_producto():
+    codigo = request.form["codigo"]
+    product = request.form["producto"]
+    precio = request.form["precio"]
+    descripcion = request.form["descripcion"]
+    categoria = request.form["categoria"]
+    imagen = request.form["imagen"]
+
+    editar_producto = producto.editar_producto(codigo, product, precio, descripcion, categoria, imagen)
+
+    if editar_producto:
+        return jsonify({"mensaje": "Producto modificado"}), 200
+    else:
+        return jsonify({"mensaje": "Producto no encontrado"}), 403
+    
+@app.route("/eliminar-producto")
+def eliminar_producto():
+    codigo = request.form["codigo"]
+    
+    if producto.borrar_producto(codigo):
+        return jsonify({"mensaje": "Producto eliminado"}), 200
+    else:
+        return jsonify({"mensaje": "Error al eliminar el producto"}), 500
+
 # Tiendas
-# @app.route("/agregar-tienda", methods=["POST"])
-# def agregar_tienda():
-#     nomb
+tienda = Tiendas(host="localhost", user="root", password="", database="ecommerce")
+
+@app.route("/agregar-tienda", methods=["POST"])
+def agregar_tienda():
+    nombre = request.form["nombre"]
+    imagen = request.form["imagen"]
+    vendedor = request.form["vendedor"]
+
+    respuesta = tienda.agregar_tienda(nombre, imagen, vendedor)
+    if respuesta:
+        return jsonify({"mensaje": "Tienda agregada"})
+    else:
+        return jsonify({"mensaje": "La tienda ya existe"})
 
 if __name__ == "__main__":
     app.run(debug=True)

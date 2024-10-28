@@ -24,7 +24,9 @@ body {
 }
 
 .agregar-producto,
-.editar-perfil {
+.editar-perfil,
+.editar-producto,
+.eliminar-producto {
     position: fixed;
     top: 0;
     left: 0;
@@ -38,13 +40,17 @@ body {
 }
 
 .agregar-producto.active,
-.editar-perfil.active {
+.editar-perfil.active,
+.editar-producto.active,
+.eliminar-producto.active {
     width: 100%;
     background: rgba(0, 0, 0, .6);
 }
 
 .agregar-producto-content,
-.editar-perfil-content {
+.editar-perfil-content,
+.editar-producto-content,
+.eliminar-producto-content {
     background: #A56329;
     color: #f3e8ce;
     padding: 1rem;
@@ -60,14 +66,10 @@ body {
 }
 
 .agregar-producto-content.active,
-.editar-perfil-content.active {
+.editar-perfil-content.active,
+.editar-producto-content.active,
+.eliminar-producto-content.active {
     transform: translateX(0);
-}
-
-.agregar-producto-content span,
-.editar-perfil-content span {
-    font-size: 24px;
-    font-weight: bold;
 }
 
 .form-group {
@@ -168,7 +170,10 @@ body {
 }
 
 .card-image {
-    width: 100%;
+    width: 288px;
+    height: 288px;
+    background: white;
+    cursor: pointer;
     display: flex;
 }
 
@@ -195,6 +200,67 @@ body {
     font-weight: bold;
     color: #CF9440;
 }
+
+.error {
+    position: absolute;
+    z-index: 1;
+    top: 5%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    transform: translateY(-6rem);
+    transition: transform .3s ease-out;
+}
+
+.error.active {
+    transform: translateY(0);
+}
+
+.error-container {
+    width: 400px;
+    background: red;
+    color: white;
+    padding: 1rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.error-text {
+    width: 100%;
+    text-align: center;
+}
+
+.error-container.success {
+    background: green;
+}
+
+.bx-x {
+    font-size: 32px;
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+}
+
+.confirm-btn,
+.cancel-btn {
+    color: #f3e8ce;
+    background: #CF9440;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background .3s ease-out;
+}
+
+.confirm-btn:hover,
+.cancel-btn:hover {
+    background: #C07F32;
+}
 /* /Tienda */
 
 /* Media queries */
@@ -210,10 +276,18 @@ body {
     .card-group {
         width: 256px;
     }
+
+    .card-image {
+        width: 256px;
+        height: 256px;
+    }
 }
 
 @media(min-width: 768px){
-    .agregar-producto-content {
+    .agregar-producto-content,
+    .editar-producto-content,
+    .editar-perfil-content,
+    .eliminar-producto-content {
         width: 400px;
     }
 
@@ -228,6 +302,11 @@ body {
     .card-group {
         width: 352px;
     }
+
+    .card-image {
+        width: 352px;
+        height: 352px;
+    }
 }
 
 @media(min-width: 992px){
@@ -237,6 +316,11 @@ body {
 
     .card-group {
         width: 304px;
+    }
+
+    .card-image {
+        width: 304px;
+        height: 304px;
     }
 }
 
@@ -251,6 +335,11 @@ body {
 
     .card-group {
         width: 272px;
+    }
+
+    .card-image {
+        width: 272px;
+        height: 272px;
     }
 }
 
@@ -269,5 +358,16 @@ body {
 
     .card-content h3 {
         font-size: 24px;
+    }
+
+    .agregar-producto-content h2,
+    .editar-producto-content h2,
+    .editar-perfil-content h2,
+    .eliminar-producto-content h2 {
+        font-size: 28px;
+    }
+
+    .form-group label {
+        font-size: 20px;
     }
 }

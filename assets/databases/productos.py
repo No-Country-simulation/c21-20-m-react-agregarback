@@ -18,7 +18,7 @@ class Productos:
             codigo VARCHAR(255) NOT NULL PRIMARY KEY,
             producto VARCHAR(255) NOT NULL,
             precio VARCHAR(255) NOT NULL,
-            descripcion VARCHAR(255) NOT NULL,
+            descripcion VARCHAR(510) NOT NULL,
             categoria VARCHAR(255) NOT NULL,
             vendedor VARCHAR(255) NOT NULL,
             imagen VARCHAR(255) NOT NULL,
@@ -52,15 +52,13 @@ class Productos:
         self.cursor.execute(f"SELECT * FROM productos WHERE vendedor = '{vendedor}'")
         return self.cursor.fetchall()
 
-    def editar_producto(self, codigo, producto, precio, descripcion, categoria, vendedor, imagen):
-        sql = f"UPDATE productos SET producto = '{producto}', precio = '{precio}', descripcion = '{descripcion}', categoria = '{categoria}', vendedor = '{vendedor}', imagen = '{imagen}' WHERE codigo = '{codigo}'"
+    def editar_producto(self, codigo, producto, precio, descripcion, categoria, imagen):
+        sql = f"UPDATE productos SET producto = '{producto}', precio = '{precio}', descripcion = '{descripcion}', categoria = '{categoria}', imagen = '{imagen}' WHERE codigo = '{codigo}'"
         self.cursor.execute(sql)
         self.conn.commit()
         return self.cursor.rowcount > 0
     
     def borrar_producto(self, codigo):
-        for producto in self.productos:
-            if producto["codigo"] == codigo:
-                self.productos.remove(producto)
-                return True
-        return False
+        self.cursor.execute(f"DELETE FROM productos WHERE productos.codigo = '{codigo}'")
+        self.conn.commit()
+        return self.cursor.rowcount > 0
