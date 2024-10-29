@@ -24,8 +24,8 @@ document.getElementById("cancelPerfilBtn").addEventListener("click", () => {
 })
 
 // Mostrar productos
-// const URL = "https://nomarket.pythonanywhere.com/"
-const URL = "http://127.0.0.1:5000/"
+const URL = "https://nomarket.pythonanywhere.com/"
+// const URL = "http://127.0.0.1:5000/"
 let session = localStorage.getItem("session")
 let productos = []
 
