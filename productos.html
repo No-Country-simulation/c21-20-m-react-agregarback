@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/productos.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="icon" href="assets/images/logonoc.ico">
+    <title>Productos | Productos Artesanales</title>
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar" id="navbar">
+            <i class="bx bx-menu" id="menuButton"></i>
+            <div class="navbar-nav">
+                <ul class="navbar-items">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+                <ul class="navbar-perfil">
+                    <li id="userContent">
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <!-- Productos -->
+        <section class="productos">
+            <div class="productos-search">
+                <form class="search-group">
+                    <label for="search">Buscar producto</label>
+                    <input type="text" name="search" id="search" placeholder="Ingrese un producto">
+                </form>
+                <button type="button" class="search-button">Buscar</button>
+            </div>
+            <div class="productos-content">
+                <div class="productos-shadow" id="filterShadow">
+                    <div class="productos-filtros" id="filter">
+                        <div class="filtros-header">
+                            <h1>Filtrar</h1>
+                            <span>Limpiar filtros</span>
+                        </div>
+                        <div class="filtros-content">
+                            <h2 class="filtros-title">Categorías</h2>
+                            <div class="filtros-group">
+                                <input type="checkbox" name="mates" id="mates">
+                                <label for="mates">Mates</label>
+                            </div>
+                            <div class="filtros-group">
+                                <input type="checkbox" name="bombillas" id="bombillas">
+                                <label for="bombillas">Bombillas</label>
+                            </div>
+                            <div class="filtros-group">
+                                <input type="checkbox" name="vasos" id="vasos">
+                                <label for="vasos">Vasos</label>
+                            </div>
+                            <div class="filtros-group">
+                                <input type="checkbox" name="tazas" id="tazas">
+                                <label for="tazas">Tazas</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="productos-filtros-btn">
+                    <button type="button" class="filtros-btn" id="filterBtn">
+                        <i class="bx bx-filter"></i>
+                        Filtrar productos
+                    </button>
+                </div>
+                <div class="productos-cards" id="cards">
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/productos.js"></script>
+</body>
+</html>

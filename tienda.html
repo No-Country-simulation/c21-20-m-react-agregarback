@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi tienda</title>
+    <link rel="stylesheet" href="assets/css/tienda.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="icon" href="assets/images/logonoc.ico">
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar" id="navbar">
+            <i class="bx bx-menu" id="menuButton"></i>
+            <div class="navbar-nav">
+                <ul class="navbar-items">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+                <ul class="navbar-perfil">
+                    <li id="userContent">
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="tienda">
+        <section class="tienda-header">
+            <div class="header">
+                <div class="header-img">
+                    <img src="assets/images/pexels-sorrasfilms-14775022.jpg" alt="avatar" draggable="false">
+                </div>
+                <div class="header-content">
+                    <h1 id="nombreTienda"></h1>
+                    <p id="productosCantidad"></p>
+                </div>
+            </div>
+        </section>
+        <section class="tienda-productos">
+            <div class="productos-cards" id="cards">
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/tienda.js"></script>
+</body>
+</html>

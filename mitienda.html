@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi tienda</title>
+    <link rel="stylesheet" href="assets/css/tienda.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="icon" href="assets/images/logonoc.ico">
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar" id="navbar">
+            <i class="bx bx-menu" id="menuButton"></i>
+            <div class="navbar-nav">
+                <ul class="navbar-items">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+                <ul class="navbar-perfil">
+                    <li id="userContent">
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="tienda">
+        <!-- Mostrar Error -->
+        <div class="error" id="error">
+            <div class="error-container" id="errorContainer">
+                <p class="error-text" id="errorText"></p>
+                <i class="bx bx-x" id="closeError"></i>
+            </div>
+        </div>
+        <!-- Agregar producto -->
+        <div class="agregar-producto" id="addProduct">
+            <form enctype="multipart/form-data" class="agregar-producto-content" id="AddProductContent">
+                <h2>Agregar producto</h2>
+                <div class="form-group">
+                    <label for="producto">Producto:</label>
+                    <input type="text" name="producto" id="producto" placeholder="Ingrese el nombre del producto" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <label for="codigo">Código:</label>
+                    <input type="text" name="codigo" id="codigo" placeholder="Ingrese un código" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <label for="categoria">Categoria:</label>
+                    <input type="text" name="categoria" id="categoria" placeholder="Ingrese la categoría" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <label for="desc">Descripción:</label>
+                    <textarea name="desc" id="desc" rows="5" placeholder="Ingrese una descripción" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="precio">Precio</label>
+                    <input type="number" name="precio" id="precio" placeholder="Ingrese un precio" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <label for="imagen">Imagen</label>
+                    <input type="text" name="imagen" id="imagen" placeholder="Ingrese el link de la imagen">
+                </div>
+                <button type="submit" class="form-btn">Agregar</button>
+                <button type="button" class="form-btn" id="cancelProductBtn">Cancelar</button>
+            </form>
+        </div>
+        
+        <!-- Editar producto -->
+        <div class="editar-producto" id="editProduct">
+            <form enctype="multipart/form-data" class="editar-producto-content" id="editProductContent">
+                <span>Editar producto</span>
+                <div class="form-group">
+                    <label for="editar_codigo">Código:</label>
+                    <input type="text" name="codigo" id="editar_codigo" placeholder="Ingrese el código" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="nuevo_producto">Producto:</label>
+                    <input type="text" name="producto" id="nuevo_producto" placeholder="Ingrese el nombre del producto" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <label for="nuevo_categoria">Categoria:</label>
+                    <input type="text" name="categoria" id="nuevo_categoria" placeholder="Ingrese la categoría" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <label for="nuevo_desc">Descripción:</label>
+                    <textarea name="desc" id="nuevo_desc" rows="5" placeholder="Ingrese una descripción" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="nuevo_precio">Precio</label>
+                    <input type="number" name="precio" id="nuevo_precio" placeholder="Ingrese un precio" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <label for="nuevo_imagen">Imagen</label>
+                    <input type="text" name="imagen" id="nuevo_imagen" placeholder="Ingrese el link de la imagen">
+                </div>
+                <button type="submit" class="form-btn">Editar</button>
+                <button type="button" class="form-btn" id="cancelEditBtn">Cancelar</button>
+                <button type="button" class="form-btn" id="deleteProductBtn">Eliminar producto</button>
+            </form>
+        </div>
+
+        <!-- Eliminar producto -->
+        <div class="eliminar-producto" id="deleteproduct">
+            <div class="eliminar-producto-content" id="deleteProductContent">
+                <h2>Eliminar producto</h2>
+                <p>¿Estás seguro que quieres eliminar el producto? Esta acción es irreversible.</p>
+                <button type="button" class="confirm-btn" id="confirmDelete">Eliminar</button>
+                <button type="button" class="cancel-btn" id="cancelDelete">Cancelar</button>
+            </div>
+        </div>
+
+        <!-- Editar perfil -->
+        <div class="editar-perfil" id="editarPerfil">
+            <form enctype="multipart/form-data" class="editar-perfil-content" id="editarPerfilContent">
+                <span>Editar perfil</span>
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" name="nombre" id="nombre" placeholder="Ingrese el nombre de la tienda" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <label for="imagen">Imagen</label>
+                    <input type="file" name="imagen" id="imagen">
+                </div>
+                <button type="submit" class="form-btn">Agregar</button>
+                <button type="button" class="form-btn" id="cancelPerfilBtn">Cancelar</button>
+            </form>
+        </div>
+        <section class="tienda-header">
+            <div class="header">
+                <div class="header-img">
+                    <img src="assets/images/pexels-sorrasfilms-14775022.jpg" alt="avatar" draggable="false">
+                </div>
+                <div class="header-content">
+                    <h1 id="nombreTienda"></h1>
+                    <p id="productosCantidad"></p>
+                </div>
+            </div>
+            <div class="header-button">
+                <button type="button" class="header-btn" id="addProductBtn">Nuevo producto</button>
+                <button type="button" class="header-btn" id="editProfileBtn">Editar perfil</button>
+            </div>
+        </section>
+        <section class="tienda-productos">
+            <div class="productos-cards" id="cards">
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/mitienda.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro</title>
+    <link rel="stylesheet" href="./formularios/stilo.css">
+</head>
+<body>
+    <div class="register-container">
+        <form class="register-form" enctype="multipart/form-data" id="formulario">
+            <h2>Formulario de Registro</h2>
+            
+            <!-- Campo Nombre -->
+            <div class="input-group">
+                <label for="username">Usuario</label>
+                <input type="text" id="username" name="username" placeholder="Ingresa tu nombre" autocomplete="off" required>
+            </div>
+            
+            <!-- Campo Correo Electrónico -->
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" autocomplete="off" required>
+            </div>
+            
+            <!-- Campo Contraseña -->
+            <div class="input-group">
+                <label for="contraseña">Contraseña</label>
+                <input type="password" id="contraseña" name="contraseña" placeholder="Ingresa tu contraseña" required>
+            </div>
+            
+            <!-- Selección de Tipo de Usuario -->
+            <div class="input-group">
+                <label for="rol">Tipo de Usuario</label>
+                <select id="rol" name="rol" required>
+                    <option value="" disabled selected>Selecciona el tipo de usuario</option>
+                    <option value="comprador">Comprador</option>
+                    <option value="vendedor">Vendedor</option>
+                </select>
+            </div>
+            
+            <!-- Botón de Registro -->
+            <button type="submit">Registrarse</button>
+
+
+            <!-- Checkbox de Aceptación de Términos -->
+            <div class="input-group terms">
+                <input type="checkbox" id="terminos" name="terminos" required>
+                <label for="terminos">Acepto los <a href="#">términos y condiciones</a></label>
+            </div>
+            <a  href="iniciarsesion.html">volver atras</a>
+        </form>
+    </div>
+
+    <script src="./login.js"></script>
+</body>
+</html>
