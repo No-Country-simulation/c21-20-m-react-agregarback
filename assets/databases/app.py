@@ -6,7 +6,6 @@ import os
 import time
 from usuarios import Usuarios
 from productos import Productos
-from tiendas import Tiendas
 
 app = Flask(__name__)
 CORS(app)
@@ -94,29 +93,15 @@ def editar_producto():
     else:
         return jsonify({"mensaje": "Producto no encontrado"}), 403
     
-@app.route("/eliminar-producto")
+@app.route("/eliminar-producto", methods=["DELETE"])
 def eliminar_producto():
     codigo = request.form["codigo"]
-    
-    if producto.borrar_producto(codigo):
+    borrar_producto = producto.borrar_producto(codigo)
+    if borrar_producto:
         return jsonify({"mensaje": "Producto eliminado"}), 200
     else:
         return jsonify({"mensaje": "Error al eliminar el producto"}), 500
 
-# Tiendas
-tienda = Tiendas(host="localhost", user="root", password="", database="ecommerce")
-
-@app.route("/agregar-tienda", methods=["POST"])
-def agregar_tienda():
-    nombre = request.form["nombre"]
-    imagen = request.form["imagen"]
-    vendedor = request.form["vendedor"]
-
-    respuesta = tienda.agregar_tienda(nombre, imagen, vendedor)
-    if respuesta:
-        return jsonify({"mensaje": "Tienda agregada"})
-    else:
-        return jsonify({"mensaje": "La tienda ya existe"})
 
 if __name__ == "__main__":
     app.run(debug=True)

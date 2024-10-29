@@ -179,11 +179,22 @@ document.getElementById("cancelDelete").addEventListener("click", () => {
 document.getElementById("confirmDelete").addEventListener("click", () => {
     var eliminarProducto = new FormData()
     eliminarProducto.append("codigo", productoCodigo)
-    fetch(URL + `eliminar-producto`, {
-        method: "POST",
+    fetch(URL + "eliminar-producto", {
+        method: "DELETE",
         body: eliminarProducto,
     })
     .then((response) => response.json())
-    .then((data) => console.log(data))
+    .then((data) => {
+        if (data.mensaje == "Producto eliminado") {
+            document.getElementById("errorContainer").classList.add("success")
+            document.getElementById("error").classList.add("active")
+            document.getElementById("errorText").innerHTML = data.mensaje
+
+            document.getElementById("deleteproduct").classList.remove("active")
+            document.getElementById("deleteProductContent").classList.remove("active")
+            document.getElementById("editProduct").classList.remove("active")
+            document.getElementById("editProductContent").classList.remove("active")
+        }
+    })
     .catch((error) => alert(error))
 })
