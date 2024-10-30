@@ -6,10 +6,10 @@ interesados en productos artesanales.
 [Sitio web](https://nomarket.netlify.app/)
 
 ## Participantes
-Mauricio Gutierrez - Front End
-Ariel Aguilar - Full Stack
-Federico Crer - Full Stack
-Jose Villar - PM
+- Mauricio Gutierrez - Front End
+- Ariel Aguilar - Full Stack
+- Federico Crer - Full Stack
+- Jose Villar - PM
 
 ## Tecnologías utilizadas
 ### Front End
