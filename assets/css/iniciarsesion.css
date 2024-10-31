@@ -113,7 +113,7 @@ main {
     width: 100%;
     display: flex;
     justify-content: center;
-    transform: translateY(-6rem);
+    transform: translateY(-10rem);
     transition: transform .3s ease-out;
 }
 
